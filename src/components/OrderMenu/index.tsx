@@ -9,7 +9,6 @@ import { Menu, BlackSideBar, WrapperOrderItemCards } from './styles'
 const OrderMenu: React.FC = () => {
   const { type } = useParams<{ type: string }>()
 
-  console.log(type)
   if (type === 'pizzas')
     return (
       <Menu>

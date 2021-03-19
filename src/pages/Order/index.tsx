@@ -15,8 +15,13 @@ import {
 import OrderMenu from '../../components/OrderMenu'
 import Button from '../../components/Button'
 
+interface IParamProps {
+  type: string
+  prop: string
+}
+
 const OrderPage: React.FC = () => {
-  const { type } = useParams<{ type: string }>()
+  const { type, prop } = useParams<IParamProps>()
 
   return (
     <Container>
@@ -27,7 +32,9 @@ const OrderPage: React.FC = () => {
             <Link to="/">
               <ChevronLeft size={42} />
             </Link>
-            <h1>{type.toUpperCase()}</h1>
+            <h1>
+              {type.toUpperCase()} {prop}
+            </h1>
           </Navi>
         </HeaderWrapper>
         <BottonBlackBar />
