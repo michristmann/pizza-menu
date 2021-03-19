@@ -1,0 +1,111 @@
+[
+  {
+    "name": "Pizzas",
+    "items": [
+      {
+        "name": "Pizzas Pequenas",
+        "prop": "P",
+        "description": "Serve 1 pessoa - Escolha de 1 sabor",
+        "isCombo": false,
+        "rule": {
+          "isFractionable": false,
+          "minItems": 1,
+          "maxItems": 1,
+          "priceBy": {
+            "name": "Pizzas Pequenas"
+          },
+          "showBy": {
+            "name": "Pizza"
+          },
+          "filterBy": {
+            "name": "Pizzas Pequenas"
+          }
+        }
+      },
+      {
+        "name": "Pizzas Grandes",
+        "prop": "G",
+        "description": "Serve 2 pessoas - Escolha de até 2 sabores",
+        "isCombo": false,
+        "rule": {
+          "isFractionable": true,
+          "minItems": 1,
+          "maxItems": 2,
+          "priceBy": {
+            "name": "Pizzas Grandes"
+          },
+          "showBy": {
+            "name": "Pizza"
+          },
+          "filterBy": {
+            "name": "Pizzas grandes"
+          }
+        }
+      },
+      {
+        "name": "Pizzas Gigantes",
+        "prop": "GG",
+        "description": "Serve 4 pessoas - Escolha de até 3 sabores",
+        "isCombo": false,
+        "rule": {
+          "isFractionable": true,
+          "minItems": 1,
+          "maxItems": 3,
+          "priceBy": {
+            "name": "Pizzas Gigantes"
+          },
+          "showBy": {
+            "name": "Pizza"
+          },
+          "filterBy": {
+            "name": "Pizzas gigantes"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "Bebidas",
+    "items": [
+      {
+        "name": "Sucos",
+        "isCombo": false,
+        "rule": {
+          "isFractionable": false,
+          "minItems": 1,
+          "maxItems": -1,
+          "priceBy": {
+            "name": "Sucos"
+          },
+          "showBy": {
+            "name": "Bebidas"
+          }
+        }
+      },
+      {
+        "name": "Refrigerantes",
+        "isCombo": false,
+        "rule": {
+          "isFractionable": false,
+          "minItems": 1,
+          "maxItems": -1,
+          "priceBy": {
+            "name": "Refigerantes"
+          },
+          "showBy": {
+            "name": "Bebidas"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "Extras",
+    "items": [
+      {
+        "name": "Combos e Promoções",
+        "isCombo": true
+      }
+    ]
+  }
+]

@@ -1,0 +1,108 @@
+[
+  {
+    "uuid": "A Moda do Chefe",
+    "collection": "Pizzas",
+    "category": "Salgadas",
+    "name": "A Moda do Chefe",
+    "ingredients": ["Molho Especial de Tomates", "Calabresa", "Frango"],
+    "prices": [
+      {
+        "variant": "P",
+        "price": 20.8,
+        "discount": 2.3
+      },
+      {
+        "variant": "G",
+        "price": 37.8
+      },
+      {
+        "variant": "GG",
+        "price": 62.9
+      }
+    ]
+  },
+  {
+    "uuid": "Bacon",
+    "collection": "Pizzas",
+    "category": "Salgadas",
+    "name": "Bacon",
+    "ingredients": ["Molho Especial de Tomates", "Mussarela", "Bacon"],
+    "prices": [
+      {
+        "variant": "P",
+        "price": 22.8
+      },
+      {
+        "variant": "G",
+        "price": 37.8
+      },
+      {
+        "variant": "GG",
+        "price": 50.9
+      }
+    ]
+  },
+  {
+    "uuid": "Cholate",
+    "collection": "Pizzas",
+    "category": "Doces",
+    "name": "Chocolate",
+    "ingredients": ["Leite condensado", "Mussarela", "Chocolate ao leite"],
+    "prices": [
+      {
+        "variant": "P",
+        "price": 21.8
+      },
+      {
+        "variant": "G",
+        "price": 32.8
+      },
+      {
+        "variant": "GG",
+        "price": 48.9
+      }
+    ]
+  },
+  {
+    "uuid": "Dois Amores",
+    "collection": "Pizzas",
+    "category": "Doces",
+    "name": "Dois Amores",
+    "ingredients": [
+      "Leite condensado",
+      "Mussarela",
+      "Chocolate ao leite",
+      "Chocolate branco"
+    ],
+    "prices": [
+      {
+        "variant": "P",
+        "price": 22.8
+      },
+      {
+        "variant": "G",
+        "price": 33.8
+      },
+      {
+        "variant": "GG",
+        "price": 49.9
+      }
+    ]
+  },
+  {
+    "uuid": "DelVale Laranja",
+    "collection": "Bebida",
+    "category": "Sucos",
+    "name": "DelVale Laranja",
+    "variant": "Lata",
+    "price": 4.5
+  },
+  {
+    "uuid": "DelVale Laranja",
+    "collection": "Bebida",
+    "category": "Sucos",
+    "name": "DelVale Laranja",
+    "variant": "600 mL",
+    "price": 6.5
+  }
+]
