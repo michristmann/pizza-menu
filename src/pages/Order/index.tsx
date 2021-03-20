@@ -22,6 +22,8 @@ interface IParamProps {
 const OrderPage: React.FC = () => {
   const { type } = useParams<IParamProps>()
 
+  console.log(type, 'auehauhea')
+
   return (
     <Container>
       <Header>

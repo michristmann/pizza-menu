@@ -63,9 +63,11 @@ export const Header = styled.div`
   }
 `
 
-export const PromoTag = styled.div`
+export const PromoTag = styled.li`
   padding: 0.3rem 0.6rem;
   border-radius: 1rem 0 1rem 0;
+
+  list-style: none;
 
   background: var(--color-highlightOrange);
   color: #fff;

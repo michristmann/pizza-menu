@@ -2,6 +2,7 @@ import React, { useState, useCallback, useContext, useEffect } from 'react'
 
 import { ProductContext } from '../../hooks/products'
 import { IProduct } from '../../interfaces'
+import Formatter from '../Formatter'
 
 import { Container, Item, Info, Header, Description, Button } from './styles'
 
@@ -27,6 +28,8 @@ const OrderItemCards: React.FC<IOrderContentProps> = ({
     )
   }, [context.products, collection, category])
 
+  console.log(filteredProducts)
+
   const [isActive, setIsActive] = useState(false)
 
   const handleIsActive = useCallback(() => {
@@ -47,7 +50,7 @@ const OrderItemCards: React.FC<IOrderContentProps> = ({
                 </h2>
               </Header>
               <Description>
-                <strong>R${product.price}0</strong>
+                <Formatter>{product.price}</Formatter>
               </Description>
             </Info>
             <Button onClick={handleIsActive}>

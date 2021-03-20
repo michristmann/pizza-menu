@@ -7,16 +7,16 @@
     "ingredients": ["Molho Especial de Tomates", "Calabresa", "Frango"],
     "prices": [
       {
-        "variant": "P",
+        "variant": "p",
         "price": 20.8,
         "discount": 2.3
       },
       {
-        "variant": "G",
+        "variant": "g",
         "price": 37.8
       },
       {
-        "variant": "GG",
+        "variant": "gg",
         "price": 62.9
       }
     ]
@@ -29,15 +29,15 @@
     "ingredients": ["Molho Especial de Tomates", "Mussarela", "Bacon"],
     "prices": [
       {
-        "variant": "P",
+        "variant": "p",
         "price": 22.8
       },
       {
-        "variant": "G",
+        "variant": "g",
         "price": 37.8
       },
       {
-        "variant": "GG",
+        "variant": "gg",
         "price": 50.9
       }
     ]
@@ -50,15 +50,15 @@
     "ingredients": ["Leite condensado", "Mussarela", "Chocolate ao leite"],
     "prices": [
       {
-        "variant": "P",
+        "variant": "p",
         "price": 21.8
       },
       {
-        "variant": "G",
+        "variant": "g",
         "price": 32.8
       },
       {
-        "variant": "GG",
+        "variant": "gg",
         "price": 48.9
       }
     ]
@@ -76,15 +76,15 @@
     ],
     "prices": [
       {
-        "variant": "P",
+        "variant": "p",
         "price": 22.8
       },
       {
-        "variant": "G",
+        "variant": "g",
         "price": 33.8
       },
       {
-        "variant": "GG",
+        "variant": "gg",
         "price": 49.9
       }
     ]

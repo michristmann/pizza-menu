@@ -1,9 +1,12 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ChevronRight } from '@styled-icons/boxicons-regular'
 
-import { Container, Item, Description } from './styles'
 import { MenuItemContext } from '../../hooks/menuItem'
+import { ProductContext } from '../../hooks/products'
+import { IProduct } from '../../interfaces'
+
+import { Container, Item, Description } from './styles'
 
 const MenuContent: React.FC = () => {
   const context = useContext(MenuItemContext)
@@ -45,7 +48,7 @@ const MenuContent: React.FC = () => {
               <h2>{item.name}</h2>
               <p>{item.description}</p>
             </Description>
-            <Link to={`/order/bebidas/${item.prop}`}>
+            <Link to={`/order/bebidas/${item.name.toLocaleLowerCase()}`}>
               <h2>R$ 29,90</h2>
               <ChevronRight size={24} />
             </Link>

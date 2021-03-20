@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 
 import { ProductContext } from '../../hooks/products'
 import { IProduct } from '../../interfaces'
+import Formatter from '../Formatter'
 
 import {
   Container,
@@ -61,7 +62,7 @@ const PizzaItemCards: React.FC<IOrderContentProps> = ({
               </Header>
               <Description>
                 <p> {`${product.ingredients?.join(', ')}`} </p>
-                <strong>R${price?.price}0</strong>
+                <Formatter>{price?.price}</Formatter>
               </Description>
             </Info>
             <Button onClick={handleIsActive}>

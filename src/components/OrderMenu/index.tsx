@@ -6,10 +6,15 @@ import PizzaItemCards from '../PizzaItemCards'
 
 import { Menu, BlackSideBar, WrapperOrderItemCards } from './styles'
 
-const OrderMenu: React.FC = () => {
-  const { type } = useParams<{ type: string }>()
+interface IOrderMenuProps {
+  type: string
+  prop: string
+}
 
-  if (type === 'pizzas')
+const OrderMenu: React.FC = () => {
+  const { type, prop } = useParams<IOrderMenuProps>()
+
+  if (type === 'pizzas') {
     return (
       <Menu>
         <BlackSideBar />
@@ -19,12 +24,30 @@ const OrderMenu: React.FC = () => {
         </WrapperOrderItemCards>
       </Menu>
     )
-  else
+  } else if (type === 'bebidas' && prop === 'sucos') {
     return (
       <Menu>
         <BlackSideBar />
         <WrapperOrderItemCards>
           <BeverageItemCards collection="Bebida" category="Sucos" />
+        </WrapperOrderItemCards>
+      </Menu>
+    )
+  } else if (type === 'bebidas' && prop === 'refrigerantes') {
+    return (
+      <Menu>
+        <BlackSideBar />
+        <WrapperOrderItemCards>
+          <BeverageItemCards collection="Bebida" category="Refrigerantes" />
+        </WrapperOrderItemCards>
+      </Menu>
+    )
+  } else
+    return (
+      <Menu>
+        <BlackSideBar />
+        <WrapperOrderItemCards>
+          <BeverageItemCards collection="Extras" category="??" />
         </WrapperOrderItemCards>
       </Menu>
     )

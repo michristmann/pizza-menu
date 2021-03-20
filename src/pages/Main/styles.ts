@@ -1,10 +1,28 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+const appearFromLeft = keyframes`
+    from{
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+`
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
   height: 100vh;
+
+  h1,
+  h2,
+  strong,
+  p {
+    animation: ${appearFromLeft} 1s;
+  }
 `
 
 export const Header = styled.div`
