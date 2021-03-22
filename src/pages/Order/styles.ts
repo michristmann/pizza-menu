@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components'
 const appearFromRight = keyframes`
     from{
         opacity: 0;
-        transform: translateX(20px);
+        transform: translateX(1rem);
     }
     to{
         opacity: 1;
@@ -68,27 +68,11 @@ export const Navi = styled.div`
   }
 `
 
-export const BottonBlackBar = styled.div`
+export const TopBlackBar = styled.div`
   height: 1rem;
   width: 3.6rem;
 
   border-radius: 0 1rem 0 0;
 
   background: #000;
-`
-
-export const Footer = styled.div`
-  display: flex;
-
-  margin-top: auto;
-  height: 100vh;
-
-  padding: 1.2rem 0 1.2rem 0;
-  margin-left: 2.4rem;
-
-  background: var(--color-lightYellow);
-
-  > button {
-    top: 0;
-  }
 `

@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { ProductContext } from '../../hooks/products'
@@ -41,9 +41,9 @@ const PizzaItemCards: React.FC<IOrderContentProps> = ({
 
   const [isActive, setIsActive] = useState(false)
 
-  const handleIsActive = useCallback(() => {
-    setIsActive(true)
-  }, [])
+  const handleIsActive = () => {
+    setIsActive(!isActive)
+  }
 
   return (
     <Container>
@@ -51,21 +51,30 @@ const PizzaItemCards: React.FC<IOrderContentProps> = ({
       {filteredProducts.map((product, index) => {
         const price = product.prices?.find(price => price.variant === prop)
         return (
-          <Item isActive={isActive}>
+          <Item onClick={handleIsActive} isActive={isActive}>
             <Info>
               <Header>
                 <strong> {index + 1} </strong>
                 <h2> {product.name} </h2>
-                <PromoTag>
-                  <p>Promoção</p>
-                </PromoTag>
+                {!!price?.discount === true ? (
+                  <PromoTag>
+                    <p>Promoção</p>
+                  </PromoTag>
+                ) : (
+                  <div />
+                )}
               </Header>
               <Description>
                 <p> {`${product.ingredients?.join(', ')}`} </p>
-                <Formatter>{price?.price}</Formatter>
+
+                {!!price?.discount === true ? (
+                  <Formatter>{price?.discount}</Formatter>
+                ) : (
+                  <Formatter>{price?.price}</Formatter>
+                )}
               </Description>
             </Info>
-            <Button onClick={handleIsActive}>
+            <Button>
               <p>+</p>
             </Button>
           </Item>

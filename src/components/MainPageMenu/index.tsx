@@ -1,10 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { ChevronRight } from '@styled-icons/boxicons-regular'
 
 import { MenuItemContext } from '../../hooks/menuItem'
-import { ProductContext } from '../../hooks/products'
-import { IProduct } from '../../interfaces'
 
 import { Container, Item, Description } from './styles'
 

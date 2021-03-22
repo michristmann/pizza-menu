@@ -11,7 +11,7 @@ interface IOrderMenuProps {
   prop: string
 }
 
-const OrderMenu: React.FC = () => {
+const OrderPageMenu: React.FC = () => {
   const { type, prop } = useParams<IOrderMenuProps>()
 
   if (type === 'pizzas') {
@@ -53,4 +53,4 @@ const OrderMenu: React.FC = () => {
     )
 }
 
-export default OrderMenu
+export default OrderPageMenu

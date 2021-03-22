@@ -26,11 +26,15 @@ export default createGlobalStyle`
     font-weight: 500;
   }
 
-  h2, p, span, strong {
+  h2, p, li, span, strong {
     font-family: "Dosis";
     } 
 
-  h2 {
+  strong {
+    font-weight: 500;
+  }
+  
+  h2, li {
     font-weight: 400;
   }
 

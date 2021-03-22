@@ -11,6 +11,10 @@ export const Container = styled.div`
   padding: 0 0.8rem 2.4rem 2rem;
 
   justify-content: space-between;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
 `
 
 export const Item = styled.div<ContainerProps>`
@@ -22,13 +26,15 @@ export const Item = styled.div<ContainerProps>`
   justify-content: space-between;
   padding: 2rem 0 1.2rem 1.2rem;
 
+  cursor: pointer;
+
   ${props =>
     props.isActive &&
     css`
       border-radius: 2rem;
 
       background: #fff;
-    `}
+    `};
 `
 
 export const Info = styled.div`
@@ -48,17 +54,13 @@ export const Header = styled.div`
     padding-right: 1.2rem;
   }
 
-  p,
-  strong {
-    font-size: 1.2rem;
-  }
-
   h2 {
     margin-top: -0.4rem;
   }
 
   strong {
     margin-top: -0.3rem;
+    font-size: 1.4rem;
     color: #8b8b8b;
   }
 `
@@ -89,7 +91,7 @@ export const Button = styled.button`
   height: 2rem;
   width: 2rem;
 
-  padding: 1.2rem;
+  padding: 1.6rem;
 
   align-items: center;
   justify-content: center;
@@ -102,5 +104,6 @@ export const Button = styled.button`
 
   > p {
     margin-top: -1rem;
+    font-size: 3.2rem;
   }
 `

@@ -43,6 +43,8 @@ export interface IProduct {
   name: string
   ingredients?: string[]
   variant?: string
+  // para pizzas
+  prices?: Array<{ variant?: string; price: number; discount: number }>
+  // para outros produtos
   price?: number
-  prices?: Array<{ variant?: string; price: number }>
 }

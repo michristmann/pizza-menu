@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 
 import { ProductContext } from '../../hooks/products'
 import { IProduct } from '../../interfaces'
@@ -28,20 +28,18 @@ const OrderItemCards: React.FC<IOrderContentProps> = ({
     )
   }, [context.products, collection, category])
 
-  console.log(filteredProducts)
-
   const [isActive, setIsActive] = useState(false)
 
-  const handleIsActive = useCallback(() => {
-    setIsActive(true)
-  }, [])
+  const handleIsActive = () => {
+    setIsActive(!isActive)
+  }
 
   return (
     <Container>
       <h1>{category}</h1>
       {filteredProducts.map((product, index) => {
         return (
-          <Item isActive={isActive}>
+          <Item onClick={handleIsActive} isActive={isActive}>
             <Info>
               <Header>
                 <strong> {index + 1} </strong>
@@ -53,7 +51,7 @@ const OrderItemCards: React.FC<IOrderContentProps> = ({
                 <Formatter>{product.price}</Formatter>
               </Description>
             </Info>
-            <Button onClick={handleIsActive}>
+            <Button>
               <p>+</p>
             </Button>
           </Item>

@@ -6,6 +6,19 @@ export const Menu = styled.div`
   margin-top: 12.2rem;
 
   background: var(--color-lightYellow);
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  p,
+  strong {
+    font-size: 1.6rem;
+  }
 `
 
 export const BlackSideBar = styled.div`

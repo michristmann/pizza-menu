@@ -90,6 +90,85 @@
     ]
   },
   {
+    "uuid": "Dois Amores",
+    "collection": "Pizzas",
+    "category": "Doces",
+    "name": "Dois Amores",
+    "ingredients": [
+      "Leite condensado",
+      "Mussarela",
+      "Chocolate ao leite",
+      "Chocolate branco"
+    ],
+    "prices": [
+      {
+        "variant": "p",
+        "price": 22.8
+      },
+      {
+        "variant": "g",
+        "price": 33.8
+      },
+      {
+        "variant": "gg",
+        "price": 49.9
+      }
+    ]
+  },
+  {
+    "uuid": "Dois Amores",
+    "collection": "Pizzas",
+    "category": "Doces",
+    "name": "Dois Amores",
+    "ingredients": [
+      "Leite condensado",
+      "Mussarela",
+      "Chocolate ao leite",
+      "Chocolate branco"
+    ],
+    "prices": [
+      {
+        "variant": "p",
+        "price": 22.8,
+        "discount": 3.9
+      },
+      {
+        "variant": "g",
+        "price": 33.8
+      },
+      {
+        "variant": "gg",
+        "price": 49.9
+      }
+    ]
+  },
+  {
+    "uuid": "Dois Amores",
+    "collection": "Pizzas",
+    "category": "Doces",
+    "name": "Dois Amores",
+    "ingredients": [
+      "Leite condensado",
+      "Mussarela",
+      "Chocolate ao leite",
+      "Chocolate branco"
+    ],
+    "prices": [
+      {
+        "variant": "p",
+        "price": 22.8
+      },
+      {
+        "variant": "g",
+        "price": 33.8
+      },
+      {
+        "variant": "gg",
+        "price": 49.9
+      }
+    ]
+  },
+  {
     "uuid": "DelVale Laranja",
     "collection": "Bebida",
     "category": "Sucos",

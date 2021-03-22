@@ -8,12 +8,11 @@ import {
   HeaderWrapper,
   WhiteSideBar,
   Navi,
-  BottonBlackBar,
-  Footer
+  TopBlackBar
 } from './styles'
 
-import OrderMenu from '../../components/OrderMenu'
-import Button from '../../components/Button'
+import OrderPageMenu from '../../components/OrderPageMenu'
+import OrderMenuFooter from '../../components/OrderPageFooter'
 
 interface IParamProps {
   type: string
@@ -21,8 +20,6 @@ interface IParamProps {
 
 const OrderPage: React.FC = () => {
   const { type } = useParams<IParamProps>()
-
-  console.log(type, 'auehauhea')
 
   return (
     <Container>
@@ -36,17 +33,12 @@ const OrderPage: React.FC = () => {
             <h1>{type.toUpperCase()}</h1>
           </Navi>
         </HeaderWrapper>
-        <BottonBlackBar />
+        <TopBlackBar />
       </Header>
 
-      <OrderMenu />
+      <OrderPageMenu />
 
-      <Footer>
-        <Button>
-          <h2>ADICIONAR PIZZA</h2>
-          <p>2 sabores - R$ 35,90</p>
-        </Button>
-      </Footer>
+      <OrderMenuFooter />
     </Container>
   )
 }

@@ -21,8 +21,21 @@ export const Container = styled.div`
     }
   }
 
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  p,
+  strong {
+    font-size: 1.6rem;
+  }
+
   p {
-    letter-spacing: 0.08rem;
+    letter-spacing: 0rem;
   }
 `
 
@@ -54,6 +67,8 @@ export const Item = styled.div`
 export const Description = styled.div`
   display: flex;
   flex-direction: column;
+
+  width: 70%;
 
   h2 {
     padding-bottom: 0.4rem;

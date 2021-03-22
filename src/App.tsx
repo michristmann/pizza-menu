@@ -3,20 +3,17 @@ import GlobalStyles from './styles/global'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 import Routes from './routes'
-import ProductProvider from './hooks/products'
-import MenuItemProvider from './hooks/menuItem'
+import DataProvider from './hooks/index'
 
 const App: React.FC = () => {
   return (
-    <ProductProvider>
-      <MenuItemProvider>
-        <Router>
-          <Routes />
+    <Router>
+      <DataProvider>
+        <Routes />
+      </DataProvider>
 
-          <GlobalStyles />
-        </Router>
-      </MenuItemProvider>
-    </ProductProvider>
+      <GlobalStyles />
+    </Router>
   )
 }
 
