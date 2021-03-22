@@ -92,5 +92,6 @@ export const Button = styled.button`
 
   > p {
     margin-top: -1rem;
+    font-size: 3.2rem;
   }
 `

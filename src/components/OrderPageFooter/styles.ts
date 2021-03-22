@@ -4,6 +4,8 @@ export const Footer = styled.div`
   display: flex;
   flex-direction: column;
 
+  height: 100vh;
+
   margin-top: auto;
   padding-top: 2.4rem;
   padding-bottom: 3rem;

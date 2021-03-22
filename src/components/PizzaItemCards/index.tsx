@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 
 import { ProductContext } from '../../hooks/products'
 import { IProduct } from '../../interfaces'
-import Formatter from '../Formatter'
+import { displayFormatter, priceFormatter } from '../../utils/formatter'
 
 import {
   Container,
@@ -54,7 +54,7 @@ const PizzaItemCards: React.FC<IOrderContentProps> = ({
           <Item onClick={handleIsActive} isActive={isActive}>
             <Info>
               <Header>
-                <strong> {index + 1} </strong>
+                <strong> {displayFormatter(index + 1)} </strong>
                 <h2> {product.name} </h2>
                 {!!price?.discount === true ? (
                   <PromoTag>
@@ -68,9 +68,9 @@ const PizzaItemCards: React.FC<IOrderContentProps> = ({
                 <p> {`${product.ingredients?.join(', ')}`} </p>
 
                 {!!price?.discount === true ? (
-                  <Formatter>{price?.discount}</Formatter>
+                  <strong>{priceFormatter(price?.discount || 0)}</strong>
                 ) : (
-                  <Formatter>{price?.price}</Formatter>
+                  <strong>{priceFormatter(price?.price || 0)}</strong>
                 )}
               </Description>
             </Info>

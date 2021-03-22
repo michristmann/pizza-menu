@@ -2,8 +2,7 @@ import React, { useState, useContext, useEffect } from 'react'
 
 import { ProductContext } from '../../hooks/products'
 import { IProduct } from '../../interfaces'
-import Formatter from '../Formatter'
-
+import { displayFormatter, priceFormatter } from '../../utils/formatter'
 import { Container, Item, Info, Header, Description, Button } from './styles'
 
 interface IOrderContentProps {
@@ -42,13 +41,13 @@ const OrderItemCards: React.FC<IOrderContentProps> = ({
           <Item onClick={handleIsActive} isActive={isActive}>
             <Info>
               <Header>
-                <strong> {index + 1} </strong>
+                <strong> {displayFormatter(index + 1)} </strong>
                 <h2>
                   {product.name} - {product.variant}
                 </h2>
               </Header>
               <Description>
-                <Formatter>{product.price}</Formatter>
+                <strong>{priceFormatter(product.price || 0)}</strong>
               </Description>
             </Info>
             <Button>
