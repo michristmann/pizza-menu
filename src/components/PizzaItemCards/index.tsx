@@ -18,13 +18,17 @@ import {
 interface IOrderContentProps {
   collection: string
   category: string
+  setActiveProductId: (uuid: string) => void
+  activeProductId: string
 }
 
 const PizzaItemCards: React.FC<IOrderContentProps> = ({
   collection,
-  category
+  category,
+  setActiveProductId,
+  activeProductId
 }) => {
-  const context = useContext(ProductContext)
+  const { products, addProductPreview } = useContext(ProductContext)
 
   const { prop } = useParams<{ prop: string }>()
 
@@ -32,18 +36,12 @@ const PizzaItemCards: React.FC<IOrderContentProps> = ({
 
   useEffect(() => {
     setFilteredProducts(
-      context.products.filter(
+      products.filter(
         product =>
           product.category === category && product.collection === collection
       )
     )
-  }, [context.products, collection, category])
-
-  const [isActive, setIsActive] = useState(false)
-
-  const handleIsActive = () => {
-    setIsActive(!isActive)
-  }
+  }, [products, collection, category])
 
   return (
     <Container>
@@ -51,7 +49,12 @@ const PizzaItemCards: React.FC<IOrderContentProps> = ({
       {filteredProducts.map((product, index) => {
         const price = product.prices?.find(price => price.variant === prop)
         return (
-          <Item onClick={handleIsActive} isActive={isActive}>
+          <Item
+            onClick={() => {
+              setActiveProductId(product.uuid)
+            }}
+            isActive={activeProductId === product.uuid}
+          >
             <Info>
               <Header>
                 <strong> {displayFormatter(index + 1)} </strong>
@@ -68,14 +71,28 @@ const PizzaItemCards: React.FC<IOrderContentProps> = ({
                 <p> {`${product.ingredients?.join(', ')}`} </p>
 
                 {!!price?.discount === true ? (
-                  <strong>{priceFormatter(price?.discount || 0)}</strong>
+                  <>
+                    <strong id="oldPrice">
+                      {priceFormatter(price?.price || 0)}
+                    </strong>
+                    {'   '}
+                    <strong>
+                      {priceFormatter(
+                        (price?.price || 0) - (price?.discount || 0) || 0
+                      )}
+                    </strong>
+                  </>
                 ) : (
                   <strong>{priceFormatter(price?.price || 0)}</strong>
                 )}
               </Description>
             </Info>
-            <Button>
-              <p>+</p>
+            <Button
+              onClick={() => {
+                addProductPreview(product)
+              }}
+            >
+              <div>+</div>
             </Button>
           </Item>
         )

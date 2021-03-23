@@ -49,7 +49,7 @@ export const Item = styled.div`
   > a {
     display: flex;
 
-    margin-top: -1.2rem;
+    margin-bottom: auto;
     padding-right: 1.2rem;
 
     align-items: center;

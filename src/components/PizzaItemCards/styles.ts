@@ -67,7 +67,7 @@ export const Header = styled.div`
 
 export const PromoTag = styled.li`
   padding: 0.3rem 0.6rem;
-  border-radius: 1rem 0 1rem 0;
+  border-radius: 1.2rem 0 1.2rem 0;
 
   list-style: none;
 
@@ -82,6 +82,12 @@ export const Description = styled.div`
 
   strong {
     color: var(--color-highlightGreen);
+  }
+
+  #oldPrice {
+    color: #ca3433;
+    text-decoration: line-through;
+    padding-right: 0.8rem;
   }
 `
 
@@ -102,7 +108,7 @@ export const Button = styled.button`
   background-color: transparent;
   color: var(--color-highlightOrange);
 
-  > p {
+  > div {
     margin-top: -1rem;
     font-size: 3.2rem;
   }

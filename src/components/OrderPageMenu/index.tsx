@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import BeverageItemCards from '../BeverageItemCards'
 
@@ -14,13 +14,25 @@ interface IOrderMenuProps {
 const OrderPageMenu: React.FC = () => {
   const { type, prop } = useParams<IOrderMenuProps>()
 
+  const [activeProductId, setActiveProductId] = useState('')
+
   if (type === 'pizzas') {
     return (
       <Menu>
         <BlackSideBar />
         <WrapperOrderItemCards>
-          <PizzaItemCards collection="Pizzas" category="Salgadas" />
-          <PizzaItemCards collection="Pizzas" category="Doces" />
+          <PizzaItemCards
+            setActiveProductId={setActiveProductId}
+            activeProductId={activeProductId}
+            collection="Pizzas"
+            category="Salgadas"
+          />
+          <PizzaItemCards
+            setActiveProductId={setActiveProductId}
+            activeProductId={activeProductId}
+            collection="Pizzas"
+            category="Doces"
+          />
         </WrapperOrderItemCards>
       </Menu>
     )
