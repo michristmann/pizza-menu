@@ -21,22 +21,20 @@ const OrderPageFooter: React.FC = () => {
       : priceBySize?.price || 0
   })
 
-  console.log(pizzaPrice)
+  const totalPizzaPrice = pizzaPrice.reduce(
+    (accumulate, current) => accumulate + current,
+    0
+  )
 
-  const totalPizzaPrice = pizzaPrice.reduce((accum, curr) => accum + curr)
-
-  console.log(totalPizzaPrice / orderProductsPreview.length)
+  const displayTotalPizzaPrice =
+    totalPizzaPrice / orderProductsPreview.length || 0
 
   return (
     <Footer>
       {orderProductsPreview.map((product, index) => {
-        return (
-          <>
-            <li>{product.name}</li>
-          </>
-        )
+        return <li>{product.name}</li>
       })}
-      <strong> Total: {priceFormatter(50)}</strong>
+      <strong> Total: {priceFormatter(displayTotalPizzaPrice)}</strong>
       <Button onClick={() => {}}>
         <h2>ADICIONAR AO CARRINHO</h2>
       </Button>
