@@ -1,18 +1,18 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
-import BeverageItemCards from '../BeverageItemCards'
 
+import BeverageItemCards from '../BeverageItemCards'
 import PizzaItemCards from '../PizzaItemCards'
 
 import { Menu, BlackSideBar, WrapperOrderItemCards } from './styles'
 
-interface IOrderMenuProps {
+interface IRouteProps {
   type: string
   prop: string
 }
 
 const OrderPageMenu: React.FC = () => {
-  const { type, prop } = useParams<IOrderMenuProps>()
+  const { type, prop } = useParams<IRouteProps>()
 
   const [activeProductId, setActiveProductId] = useState('')
 
@@ -41,7 +41,12 @@ const OrderPageMenu: React.FC = () => {
       <Menu>
         <BlackSideBar />
         <WrapperOrderItemCards>
-          <BeverageItemCards collection="Bebida" category="Sucos" />
+          <BeverageItemCards
+            setActiveProductId={setActiveProductId}
+            activeProductId={activeProductId}
+            collection="Bebida"
+            category="Sucos"
+          />
         </WrapperOrderItemCards>
       </Menu>
     )
@@ -50,7 +55,12 @@ const OrderPageMenu: React.FC = () => {
       <Menu>
         <BlackSideBar />
         <WrapperOrderItemCards>
-          <BeverageItemCards collection="Bebida" category="Refrigerantes" />
+          <BeverageItemCards
+            setActiveProductId={setActiveProductId}
+            activeProductId={activeProductId}
+            collection="Bebida"
+            category="Refrigerantes"
+          />
         </WrapperOrderItemCards>
       </Menu>
     )
@@ -59,7 +69,12 @@ const OrderPageMenu: React.FC = () => {
       <Menu>
         <BlackSideBar />
         <WrapperOrderItemCards>
-          <BeverageItemCards collection="Extras" category="??" />
+          <BeverageItemCards
+            setActiveProductId={setActiveProductId}
+            activeProductId={activeProductId}
+            collection="Extras"
+            category="??"
+          />
         </WrapperOrderItemCards>
       </Menu>
     )

@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { ChevronLeft } from '@styled-icons/boxicons-regular'
 import { Link, useParams } from 'react-router-dom'
+
+import OrderPageMenu from '../../components/OrderPageMenu'
+import OrderMenuFooter from '../../components/OrderPageFooter'
+import { ProductContext } from '../../hooks/products'
 
 import {
   Container,
@@ -11,14 +15,13 @@ import {
   TopBlackBar
 } from './styles'
 
-import OrderPageMenu from '../../components/OrderPageMenu'
-import OrderMenuFooter from '../../components/OrderPageFooter'
-
 interface IParamProps {
   type: string
 }
 
 const OrderPage: React.FC = () => {
+  const { resetProductPreview } = useContext(ProductContext)
+
   const { type } = useParams<IParamProps>()
 
   return (
@@ -27,7 +30,12 @@ const OrderPage: React.FC = () => {
         <HeaderWrapper>
           <WhiteSideBar />
           <Navi>
-            <Link to="/">
+            <Link
+              to="/"
+              onClick={() => {
+                resetProductPreview()
+              }}
+            >
               <ChevronLeft size={42} />
             </Link>
             <h1>{type.toUpperCase()}</h1>

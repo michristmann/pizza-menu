@@ -4,7 +4,7 @@
     "items": [
       {
         "name": "Pizzas Pequenas",
-        "prop": "p",
+        "size": "p",
         "description": "Serve 1 pessoa - Escolha de 1 sabor",
         "isCombo": false,
         "rule": {
@@ -24,7 +24,7 @@
       },
       {
         "name": "Pizzas Grandes",
-        "prop": "g",
+        "size": "g",
         "description": "Serve 2 pessoas - Escolha de até 2 sabores",
         "isCombo": false,
         "rule": {
@@ -44,7 +44,7 @@
       },
       {
         "name": "Pizzas Gigantes",
-        "prop": "gg",
+        "size": "gg",
         "description": "Serve 4 pessoas - Escolha de até 3 sabores",
         "isCombo": false,
         "rule": {

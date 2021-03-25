@@ -30,7 +30,7 @@ const MainPageMenu: React.FC = () => {
               <h2>{item.name}</h2>
               <p>{item.description}</p>
             </Description>
-            <Link to={`/order/pizzas/${item.prop}`}>
+            <Link to={`/order/pizzas/${item.size}`}>
               <ChevronRight size={24} />
             </Link>
           </Item>

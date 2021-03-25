@@ -7,21 +7,20 @@ interface IProductsData {
   products: IProduct[]
   orderProductsPreview: IProduct[]
   addProductPreview: (product: IProduct) => IProduct[]
-  adddPreviewToLocalStorage: (newProduct: ILocalStorageItem) => void
+  removeProductPreview: (product: IProduct) => void
+  resetProductPreview(): void
+  addPreviewToLocalStorage: (newProduct: ILocalStorageItem) => void
 }
 
 interface ILocalStorageItem {
   id: string
-  quantity: number
   price: number
-  products: IProduct[]
+  orderDetail: Array<{ product: IProduct[]; quantity: number }>
 }
-
-// baseado no id faz filtro para remoção dos items
 
 export const ProductContext = createContext<IProductsData>({} as IProductsData)
 
-const localStorageKey = '@Pizza-menu: NewProductPreview'
+const localStorageKey = '@Pizza-menu:NewProductPreview'
 
 const ProductProvider: React.FC = ({ children }) => {
   const [products, setProducts] = useState<IProduct[]>([])
@@ -40,7 +39,27 @@ const ProductProvider: React.FC = ({ children }) => {
     [setOrderProductsPreview, orderProductsPreview]
   )
 
-  const adddPreviewToLocalStorage = useCallback(
+  const removeProductPreview = useCallback(
+    (product: IProduct) => {
+      const productIndex = orderProductsPreview.indexOf(product)
+      const clonedorderProductsPreview = [...orderProductsPreview]
+
+      if (productIndex > -1) {
+        clonedorderProductsPreview.splice(productIndex, 1)
+
+        setOrderProductsPreview(clonedorderProductsPreview)
+
+        return clonedorderProductsPreview
+      }
+    },
+    [setOrderProductsPreview, orderProductsPreview]
+  )
+
+  const resetProductPreview = useCallback(() => {
+    setOrderProductsPreview([])
+  }, [setOrderProductsPreview])
+
+  const addPreviewToLocalStorage = useCallback(
     (newProduct: ILocalStorageItem) => {
       const savedItems: ILocalStorageItem[] = JSON.parse(
         localStorage.getItem(localStorageKey) || '[]'
@@ -77,7 +96,9 @@ const ProductProvider: React.FC = ({ children }) => {
         products,
         orderProductsPreview,
         addProductPreview,
-        adddPreviewToLocalStorage
+        removeProductPreview,
+        resetProductPreview,
+        addPreviewToLocalStorage
       }}
     >
       {children}
