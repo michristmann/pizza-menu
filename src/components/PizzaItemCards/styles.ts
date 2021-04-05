@@ -60,10 +60,14 @@ export const Item = styled.div<ContainerProps>`
       border-radius: 2rem;
 
       background: #fff;
+<<<<<<< HEAD
 
       border-top: 0.1rem solid #fae5c0;
       border-bottom: 0.1rem solid #fae5c0;
     `};
+=======
+    `}
+>>>>>>> 5feb7a38aa9d4cfa6c37b7dd3b5070e4b717cb2e
 `
 
 export const Info = styled.div`
@@ -118,6 +122,7 @@ export const Description = styled.div`
     text-decoration: line-through;
     padding-right: 0.8rem;
   }
+<<<<<<< HEAD
 `
 
 export const ButtonWrapper = styled.div<ContainerProps>`
@@ -156,6 +161,46 @@ export const ButtonWrapper = styled.div<ContainerProps>`
     `}
 `
 
+=======
+`
+
+export const ButtonWrapper = styled.div<ContainerProps>`
+  display: flex;
+  flex-direction: row;
+
+  align-items: flex-end;
+  justify-content: flex-end;
+
+  #remove {
+    display: none;
+    margin-right: 0.8rem;
+  }
+
+  #add {
+    margin-right: 0.8rem;
+  }
+
+  ${props =>
+    props.isActive &&
+    css`
+      display: flex;
+      flex-direction: column;
+
+      width: 15%;
+      height: 100%;
+
+      #remove {
+        display: flex;
+        animation: ${removeButtonAnimation} 1s;
+      }
+
+      #add {
+        animation: ${addButtonAnimation} 1s;
+      }
+    `}
+`
+
+>>>>>>> 5feb7a38aa9d4cfa6c37b7dd3b5070e4b717cb2e
 export const Button = styled.button<ButtonProps>`
   display: flex;
 
@@ -178,6 +223,7 @@ export const Button = styled.button<ButtonProps>`
 
   > div {
     font-size: 2.4rem;
+<<<<<<< HEAD
   }
 
   &:first-child {
@@ -188,6 +234,18 @@ export const Button = styled.button<ButtonProps>`
     opacity: 0.1;
   }
 
+=======
+  }
+
+  &:first-child {
+    margin-bottom: 1.2rem;
+  }
+
+  &:active {
+    opacity: 0.1;
+  }
+
+>>>>>>> 5feb7a38aa9d4cfa6c37b7dd3b5070e4b717cb2e
   ${props =>
     props.isDisabled &&
     css`
