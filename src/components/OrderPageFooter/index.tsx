@@ -90,7 +90,7 @@ const OrderPageFooter: React.FC = () => {
         addPreviewToLocalStorage({
           id: uuidv4(),
           //@ts-ignore
-          price: otherThanPizzaPrice,
+          price: [p.price] * productsCount[p.uuid],
           orderDetail: [
             {
               product: [p],
@@ -101,7 +101,7 @@ const OrderPageFooter: React.FC = () => {
         })
       }
     })
-  }, [addPreviewToLocalStorage, otherThanPizzaPrice, productsCount, products])
+  }, [addPreviewToLocalStorage, productsCount, products])
 
   return (
     <Footer>
@@ -129,9 +129,9 @@ const OrderPageFooter: React.FC = () => {
           <strong> Total: {priceFormatter(otherThanPizzaPrice)}</strong>
         )}
         <Button
-          onClick={() =>
-            type === 'pizzas' ? addPizzaToCart : addOtherThanToCart
-          }
+          onClick={() => {
+            type === 'pizzas' ? addPizzaToCart() : addOtherThanToCart()
+          }}
         >
           <h2>ADICIONAR AO CARRINHO</h2>
         </Button>
