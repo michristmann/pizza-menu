@@ -64,7 +64,7 @@
     ]
   },
   {
-    "uuid": "Dois Amores",
+    "uuid": "Dois Amores1",
     "collection": "Pizzas",
     "category": "Doces",
     "name": "Dois Amores",
@@ -90,7 +90,7 @@
     ]
   },
   {
-    "uuid": "Dois Amores",
+    "uuid": "Dois Amores2",
     "collection": "Pizzas",
     "category": "Doces",
     "name": "Dois Amores",
@@ -116,7 +116,7 @@
     ]
   },
   {
-    "uuid": "Dois Amores",
+    "uuid": "Dois Amores3",
     "collection": "Pizzas",
     "category": "Doces",
     "name": "Dois Amores",
@@ -143,7 +143,7 @@
     ]
   },
   {
-    "uuid": "Dois Amores",
+    "uuid": "Dois Amores4",
     "collection": "Pizzas",
     "category": "Doces",
     "name": "Dois Amores",
@@ -169,7 +169,7 @@
     ]
   },
   {
-    "uuid": "DelVale Laranja",
+    "uuid": "DelVale Laranja Lata",
     "collection": "Bebida",
     "category": "Sucos",
     "name": "DelVale Laranja",
@@ -177,11 +177,43 @@
     "price": 4.5
   },
   {
-    "uuid": "DelVale Laranja",
+    "uuid": "DelVale Laranja 600mL",
     "collection": "Bebida",
     "category": "Sucos",
     "name": "DelVale Laranja",
     "variant": "600 mL",
     "price": 6.5
+  },
+  {
+    "uuid": "Coca-Cola Lata",
+    "collection": "Bebida",
+    "category": "Refrigerantes",
+    "name": "Coca-Cola",
+    "variant": "Lata",
+    "price": 4.5
+  },
+  {
+    "uuid": "Coca-Cola 2L",
+    "collection": "Bebida",
+    "category": "Refrigerantes",
+    "name": "Coca-Cola",
+    "variant": "2L",
+    "price": 12
+  },
+  {
+    "uuid": "Guaraná Antarctica Lata",
+    "collection": "Bebida",
+    "category": "Refrigerantes",
+    "name": "Guaraná Antarctica",
+    "variant": "Lata",
+    "price": 4.5
+  },
+  {
+    "uuid": "Guaraná Antarctica 2L",
+    "collection": "Bebida",
+    "category": "Refrigerantes",
+    "name": "Guaraná Antarctica",
+    "variant": "2L",
+    "price": 12
   }
 ]

@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom'
 import { ChevronRight } from '@styled-icons/boxicons-regular'
 
 import { MenuItemContext } from '../../hooks/menuItem'
-import { priceFormatter } from '../../utils/formatter'
 
 import { Container, Item, Description } from './styles'
 
-const MenuContent: React.FC = () => {
+const MainPageMenu: React.FC = () => {
   const context = useContext(MenuItemContext)
 
   const pizzaItem = context.items
@@ -31,8 +30,7 @@ const MenuContent: React.FC = () => {
               <h2>{item.name}</h2>
               <p>{item.description}</p>
             </Description>
-            <Link to={`/order/pizzas/${item.prop}`}>
-              <h2>{priceFormatter(29.9)}</h2>
+            <Link to={`/order/pizzas/${item.size}`}>
               <ChevronRight size={24} />
             </Link>
           </Item>
@@ -48,7 +46,6 @@ const MenuContent: React.FC = () => {
               <p>{item.description}</p>
             </Description>
             <Link to={`/order/bebidas/${item.name.toLocaleLowerCase()}`}>
-              <h2>{priceFormatter(9.9)}</h2>
               <ChevronRight size={24} />
             </Link>
           </Item>
@@ -64,7 +61,6 @@ const MenuContent: React.FC = () => {
               <p>{item.description}</p>
             </Description>
             <Link to="/order/extras">
-              <h2>{priceFormatter(29.9)}</h2>
               <ChevronRight size={24} />
             </Link>
           </Item>
@@ -74,4 +70,4 @@ const MenuContent: React.FC = () => {
   )
 }
 
-export default MenuContent
+export default MainPageMenu

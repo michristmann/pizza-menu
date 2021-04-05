@@ -21,7 +21,6 @@ export const Container = styled.div`
   h2,
   p,
   li,
-  button,
   strong {
     animation: ${appearFromRight} 1s;
   }

@@ -1,8 +1,34 @@
-import styled, { css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 
 interface ContainerProps {
   isActive: boolean
 }
+
+interface ButtonProps {
+  isDisabled: boolean
+}
+
+const removeButtonAnimation = keyframes`
+    from{
+        opacity: 0;
+        transform: translateY(2.2rem);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+`
+
+const addButtonAnimation = keyframes`
+    from{
+        opacity: 0;
+        transform: translateY(-2.2rem);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+`
 
 export const Container = styled.div`
   display: flex;
@@ -22,13 +48,18 @@ export const Item = styled.div<ContainerProps>`
   justify-content: space-between;
   padding: 2rem 0 1.2rem 1.2rem;
 
+  cursor: pointer;
+
   ${props =>
     props.isActive &&
     css`
       border-radius: 2rem;
 
       background: #fff;
-    `}
+
+      border-top: 0.1rem solid #fae5c0;
+      border-bottom: 0.1rem solid #fae5c0;
+    `};
 `
 
 export const Info = styled.div`
@@ -71,15 +102,57 @@ export const Description = styled.div`
   strong {
     color: var(--color-highlightGreen);
   }
+
+  #oldPrice {
+    color: #ca3433;
+    text-decoration: line-through;
+    padding-right: 0.8rem;
+  }
 `
 
-export const Button = styled.button`
+export const ButtonWrapper = styled.div<ContainerProps>`
+  display: flex;
+  flex-direction: row;
+
+  align-items: flex-end;
+  justify-content: flex-end;
+
+  #remove {
+    display: none;
+    margin-right: 0.8rem;
+  }
+
+  #add {
+    margin-right: 0.8rem;
+  }
+
+  ${props =>
+    props.isActive &&
+    css`
+      display: flex;
+      flex-direction: column;
+
+      width: 15%;
+      height: 100%;
+
+      #remove {
+        display: flex;
+        animation: ${removeButtonAnimation} 1s;
+      }
+
+      #add {
+        animation: ${addButtonAnimation} 1s;
+      }
+    `}
+`
+
+export const Button = styled.button<ButtonProps>`
   display: flex;
 
   height: 2rem;
   width: 2rem;
 
-  padding: 1.2rem;
+  padding: 1.6rem;
 
   align-items: center;
   justify-content: center;
@@ -87,11 +160,27 @@ export const Button = styled.button`
   font-size: 2.4rem;
 
   border: none;
+  border-radius: 50%;
   background-color: transparent;
   color: var(--color-highlightOrange);
 
-  > p {
-    margin-top: -1rem;
-    font-size: 3.2rem;
+  transition: opacity 0.4s;
+
+  > div {
+    font-size: 2.4rem;
   }
+
+  &:first-child {
+    margin-bottom: 1.2rem;
+  }
+
+  &:active {
+    opacity: 0.1;
+  }
+
+  ${props =>
+    props.isDisabled &&
+    css`
+      color: #bfbfbf;
+    `}
 `

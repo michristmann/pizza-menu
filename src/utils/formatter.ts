@@ -9,7 +9,7 @@ export function priceFormatter(value: number) {
 }
 
 export function displayFormatter(value: number) {
-  const indexFormatter = new Intl.NumberFormat('', {
+  const indexFormatter = new Intl.NumberFormat('pt-Br', {
     minimumIntegerDigits: 2
   })
 

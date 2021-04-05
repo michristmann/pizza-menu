@@ -12,19 +12,29 @@ import {
   Header,
   PromoTag,
   Description,
+  ButtonWrapper,
   Button
 } from './styles'
 
-interface IOrderContentProps {
+interface IOrderItemProps {
   collection: string
   category: string
+  setActiveProductId: (uuid: string) => void
+  activeProductId: string
 }
 
-const PizzaItemCards: React.FC<IOrderContentProps> = ({
+const PizzaItemCards: React.FC<IOrderItemProps> = ({
   collection,
-  category
+  category,
+  setActiveProductId,
+  activeProductId
 }) => {
-  const context = useContext(ProductContext)
+  const {
+    products,
+    addProductPreview,
+    removeProductPreview,
+    orderProductsPreview
+  } = useContext(ProductContext)
 
   const { prop } = useParams<{ prop: string }>()
 
@@ -32,18 +42,12 @@ const PizzaItemCards: React.FC<IOrderContentProps> = ({
 
   useEffect(() => {
     setFilteredProducts(
-      context.products.filter(
+      products.filter(
         product =>
           product.category === category && product.collection === collection
       )
     )
-  }, [context.products, collection, category])
-
-  const [isActive, setIsActive] = useState(false)
-
-  const handleIsActive = () => {
-    setIsActive(!isActive)
-  }
+  }, [products, collection, category])
 
   return (
     <Container>
@@ -51,7 +55,12 @@ const PizzaItemCards: React.FC<IOrderContentProps> = ({
       {filteredProducts.map((product, index) => {
         const price = product.prices?.find(price => price.variant === prop)
         return (
-          <Item onClick={handleIsActive} isActive={isActive}>
+          <Item
+            onClick={() => {
+              setActiveProductId(product.uuid)
+            }}
+            isActive={activeProductId === product.uuid}
+          >
             <Info>
               <Header>
                 <strong> {displayFormatter(index + 1)} </strong>
@@ -66,17 +75,59 @@ const PizzaItemCards: React.FC<IOrderContentProps> = ({
               </Header>
               <Description>
                 <p> {`${product.ingredients?.join(', ')}`} </p>
-
                 {!!price?.discount === true ? (
-                  <strong>{priceFormatter(price?.discount || 0)}</strong>
+                  <>
+                    <strong id="oldPrice">
+                      {priceFormatter(price?.price || 0)}
+                    </strong>
+                    {'   '}
+                    <strong>
+                      {priceFormatter(
+                        (price?.price || 0) - (price?.discount || 0) || 0
+                      )}
+                    </strong>
+                  </>
                 ) : (
                   <strong>{priceFormatter(price?.price || 0)}</strong>
                 )}
               </Description>
             </Info>
-            <Button>
-              <p>+</p>
-            </Button>
+            <ButtonWrapper isActive={activeProductId === product.uuid}>
+              <Button
+                id="remove"
+                isDisabled={orderProductsPreview.length === 0}
+                onClick={() => {
+                  removeProductPreview(product)
+                }}
+              >
+                <div>-</div>
+              </Button>
+              <Button
+                id="add"
+                isDisabled={
+                  (prop === 'p' &&
+                    orderProductsPreview.length >= 1 &&
+                    activeProductId === product.uuid) ||
+                  (prop === 'g' &&
+                    orderProductsPreview.length >= 2 &&
+                    activeProductId === product.uuid) ||
+                  (prop === 'gg' &&
+                    orderProductsPreview.length >= 3 &&
+                    activeProductId === product.uuid)
+                }
+                onClick={() => {
+                  if (prop === 'p' && orderProductsPreview.length < 1) {
+                    addProductPreview(product)
+                  } else if (prop === 'g' && orderProductsPreview.length < 2) {
+                    addProductPreview(product)
+                  } else if (prop === 'gg' && orderProductsPreview.length < 3) {
+                    addProductPreview(product)
+                  }
+                }}
+              >
+                <div>+</div>
+              </Button>
+            </ButtonWrapper>
           </Item>
         )
       })}

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import MainPageFooter from '../../components/MainPageFooter'
-import MenuContent from '../../components/MainPageMenu'
+import MainPageMenu from '../../components/MainPageMenu'
 
 import { Container, Header, HeaderWrapper, BlackBar, Menu } from './styles'
 
@@ -17,7 +17,7 @@ const MainPage: React.FC = () => {
       </Header>
 
       <Menu>
-        <MenuContent />
+        <MainPageMenu />
       </Menu>
 
       <MainPageFooter />

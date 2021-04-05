@@ -27,7 +27,7 @@ export interface IMenuItem {
 export interface IMenuItemProps {
   name: string
   isCombo: boolean
-  prop: string
+  size: string
   description: string
 }
 

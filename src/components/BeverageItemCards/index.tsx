@@ -3,42 +3,63 @@ import React, { useState, useContext, useEffect } from 'react'
 import { ProductContext } from '../../hooks/products'
 import { IProduct } from '../../interfaces'
 import { displayFormatter, priceFormatter } from '../../utils/formatter'
-import { Container, Item, Info, Header, Description, Button } from './styles'
 
-interface IOrderContentProps {
+import {
+  Container,
+  Item,
+  Info,
+  Header,
+  Description,
+  ButtonWrapper,
+  Button
+} from './styles'
+
+interface IOrderItemProps {
   collection: string
   category: string
+  setActiveProductId: (uuid: string) => void
+  activeProductId: string
 }
 
-const OrderItemCards: React.FC<IOrderContentProps> = ({
+const OrderItemCards: React.FC<IOrderItemProps> = ({
   collection,
-  category
+  category,
+  setActiveProductId,
+  activeProductId
 }) => {
-  const context = useContext(ProductContext)
+  const {
+    products,
+    addProductPreview,
+    removeProductPreview,
+    orderProductsPreview
+  } = useContext(ProductContext)
 
   const [filteredProducts, setFilteredProducts] = useState<IProduct[]>([])
 
   useEffect(() => {
     setFilteredProducts(
-      context.products.filter(
+      products.filter(
         product =>
           product.category === category && product.collection === collection
       )
     )
-  }, [context.products, collection, category])
+  }, [products, collection, category])
 
-  const [isActive, setIsActive] = useState(false)
+  // const uuidVerifier = orderProductsPreview.map(product => product.uuid)
 
-  const handleIsActive = () => {
-    setIsActive(!isActive)
-  }
+  // avaliar como fazer para comparar item no array com uuid do produto
 
   return (
     <Container>
       <h1>{category}</h1>
       {filteredProducts.map((product, index) => {
         return (
-          <Item onClick={handleIsActive} isActive={isActive}>
+          <Item
+            onClick={() => {
+              setActiveProductId(product.uuid)
+            }}
+            isActive={activeProductId === product.uuid}
+          >
             <Info>
               <Header>
                 <strong> {displayFormatter(index + 1)} </strong>
@@ -50,9 +71,26 @@ const OrderItemCards: React.FC<IOrderContentProps> = ({
                 <strong>{priceFormatter(product.price || 0)}</strong>
               </Description>
             </Info>
-            <Button>
-              <p>+</p>
-            </Button>
+            <ButtonWrapper isActive={activeProductId === product.uuid}>
+              <Button
+                id="remove"
+                isDisabled={orderProductsPreview.length === 0}
+                onClick={() => {
+                  removeProductPreview(product)
+                }}
+              >
+                <div>-</div>
+              </Button>
+              <Button
+                id="add"
+                isDisabled={false}
+                onClick={() => {
+                  addProductPreview(product)
+                }}
+              >
+                <div>+</div>
+              </Button>
+            </ButtonWrapper>
           </Item>
         )
       })}
