@@ -6,10 +6,12 @@ import { IProduct } from '../interfaces/index'
 interface IProductsData {
   products: IProduct[]
   orderProductsPreview: IProduct[]
+  localStorageData: ILocalStorageItem[]
   addProductPreview: (product: IProduct) => IProduct[]
   removeProductPreview: (product: IProduct) => void
   resetProductPreview(): void
   addPreviewToLocalStorage: (newProduct: ILocalStorageItem) => void
+  removeLocalStorageData(): void
 }
 
 interface ILocalStorageItem {
@@ -27,6 +29,24 @@ const ProductProvider: React.FC = ({ children }) => {
   const [orderProductsPreview, setOrderProductsPreview] = useState<IProduct[]>(
     []
   )
+  const [localStorageData, setLocalStorageData] = useState<ILocalStorageItem[]>(
+    []
+  )
+
+  useEffect(() => {
+    const loadData = async () => {
+      const response = await axios.get<IProduct[]>(
+        'http://localhost:3000/products.json'
+      )
+
+      setProducts(response.data)
+    }
+
+    // filtrar opções
+    // passar opções com o filtro
+
+    loadData()
+  }, [])
 
   const addProductPreview = useCallback(
     (product: IProduct) => {
@@ -73,33 +93,33 @@ const ProductProvider: React.FC = ({ children }) => {
   )
 
   useEffect(() => {
-    const loadData = async () => {
-      const response = await axios.get<IProduct[]>(
-        'http://localhost:3000/products.json'
-      )
+    const storagedItem: ILocalStorageItem[] = JSON.parse(
+      localStorage.getItem(localStorageKey) || '[]'
+    )
 
-      setProducts(response.data)
-    }
-
-    // filtrar opções
-    // passar opções com o filtro
-
-    loadData()
+    setLocalStorageData(storagedItem)
   }, [])
 
   // remover item selecionado do local storage baseado no botão "remover" do footer tela inicial
-  // enviar produtos do local storage para msg do whatsApp
-  // limpar lista de items do local storage após a msg ser enviada
+  // enviar localStorageData para msg do whatsApp
+
+  const removeLocalStorageData = useCallback(() => {
+    localStorage.removeItem(localStorageKey)
+  }, [])
+
+  console.log(localStorageData, 'data')
 
   return (
     <ProductContext.Provider
       value={{
         products,
         orderProductsPreview,
+        localStorageData,
         addProductPreview,
         removeProductPreview,
         resetProductPreview,
-        addPreviewToLocalStorage
+        addPreviewToLocalStorage,
+        removeLocalStorageData
       }}
     >
       {children}
