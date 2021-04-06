@@ -47,6 +47,10 @@ export const FooterWrapper = styled.div`
     }
   }
 
+  > a {
+    text-decoration: none;
+  }
+
   > strong {
     font-size: 1.8rem;
     text-align: end;

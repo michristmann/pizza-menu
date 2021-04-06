@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react'
 import { v4 as uuidv4 } from 'uuid'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 
 import Button from '../Button'
 import { ProductContext } from '../../hooks/products'
@@ -16,6 +16,8 @@ interface IRouteProps {
 const OrderPageFooter: React.FC = () => {
   const {
     addPreviewToLocalStorage,
+    resetProductPreview,
+    getLocalStorageData,
     orderProductsPreview,
     products
   } = useContext(ProductContext)
@@ -103,6 +105,14 @@ const OrderPageFooter: React.FC = () => {
     })
   }, [addPreviewToLocalStorage, productsCount, products])
 
+  function addToCartTriggers() {
+    if (orderProductsPreview.length > 0) {
+      type === 'pizzas' ? addPizzaToCart() : addOtherThanToCart()
+      resetProductPreview()
+      getLocalStorageData()
+    }
+  }
+
   return (
     <Footer>
       <FooterWrapper>
@@ -128,13 +138,15 @@ const OrderPageFooter: React.FC = () => {
         ) : (
           <strong> Total: {priceFormatter(otherThanPizzaPrice)}</strong>
         )}
-        <Button
-          onClick={() => {
-            type === 'pizzas' ? addPizzaToCart() : addOtherThanToCart()
-          }}
-        >
-          <h2>ADICIONAR AO CARRINHO</h2>
-        </Button>
+        <Link to="/">
+          <Button
+            onClick={() => {
+              addToCartTriggers()
+            }}
+          >
+            <h2>ADICIONAR AO CARRINHO</h2>
+          </Button>
+        </Link>
       </FooterWrapper>
     </Footer>
   )
