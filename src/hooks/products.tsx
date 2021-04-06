@@ -11,7 +11,6 @@ interface IProductsData {
   removeProductPreview: (product: IProduct) => void
   resetProductPreview(): void
   addPreviewToLocalStorage: (newProduct: ILocalStorageItem) => void
-  getLocalStorageData: () => void
   removeLocalStorageData(): void
 }
 
@@ -30,9 +29,13 @@ const ProductProvider: React.FC = ({ children }) => {
   const [orderProductsPreview, setOrderProductsPreview] = useState<IProduct[]>(
     []
   )
-  const [localStorageData, setLocalStorageData] = useState<ILocalStorageItem[]>(
-    []
-  )
+  const [localStorageData] = useState<ILocalStorageItem[]>(() => {
+    const storagedItem: ILocalStorageItem[] = JSON.parse(
+      localStorage.getItem(localStorageKey) || '[]'
+    )
+
+    return storagedItem
+  })
 
   useEffect(() => {
     const loadData = async () => {
@@ -93,14 +96,6 @@ const ProductProvider: React.FC = ({ children }) => {
     []
   )
 
-  const getLocalStorageData = useCallback(() => {
-    const storagedItem: ILocalStorageItem[] = JSON.parse(
-      localStorage.getItem(localStorageKey) || '[]'
-    )
-
-    return setLocalStorageData(storagedItem)
-  }, [])
-
   // remover item selecionado do local storage baseado no botão "remover" do footer tela inicial
   // enviar localStorageData para msg do whatsApp
 
@@ -118,7 +113,6 @@ const ProductProvider: React.FC = ({ children }) => {
         removeProductPreview,
         resetProductPreview,
         addPreviewToLocalStorage,
-        getLocalStorageData,
         removeLocalStorageData
       }}
     >

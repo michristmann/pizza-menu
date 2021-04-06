@@ -17,7 +17,6 @@ const OrderPageFooter: React.FC = () => {
   const {
     addPreviewToLocalStorage,
     resetProductPreview,
-    getLocalStorageData,
     orderProductsPreview,
     products
   } = useContext(ProductContext)
@@ -109,7 +108,6 @@ const OrderPageFooter: React.FC = () => {
     if (orderProductsPreview.length > 0) {
       type === 'pizzas' ? addPizzaToCart() : addOtherThanToCart()
       resetProductPreview()
-      getLocalStorageData()
     }
   }
 
